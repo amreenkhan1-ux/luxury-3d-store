@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #FAF8F5; /* Premium Soft Silk Beige */
+    color: #1E1F22;
+    font-family: var(--font-serif), serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* Luxury Cinematic Glow Effect */
+.luxury-overlay {
+  background: linear-gradient(180deg, rgba(250, 248, 245, 0.2) 0%, rgba(250, 248, 245, 0.6) 80%, #FAF8F5 100%);
+}
+
+.gold-glow {
+  box-shadow: 0 0 50px rgba(197, 168, 128, 0.15);
+}
