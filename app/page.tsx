@@ -62,7 +62,7 @@ export default function Home() {
       desc: "18k Yellow Gold, 1.2ct Diamond", 
       longDesc: "Crafted with the finest ethically-sourced brilliant cut diamond, set gracefully upon a tapered solid yellow gold band. Designed to catch light from every angle with breathtaking fire.",
       price: "$2,450", 
-      mediaSrc: "/aurelia-ring.mp4",
+      mediaSrc: "/videos/aurelia-ring.mp4",
       specs: { metal: "18k Yellow Gold", stone: "1.2ct Round Brilliant", clarity: "VVS2, Color F", certification: "GIA Certified" }
     },
     { 
@@ -70,7 +70,7 @@ export default function Home() {
       desc: "Platinum, 2.0ct VVS1 Diamond", 
       longDesc: "An exquisite oval-cut solitaire showcasing master craftsmanship. Hand-set in pristine, heavy platinum with an ultra-slim micropavé band for the modern connoisseur.",
       price: "$4,200", 
-      mediaSrc: "/Nures -ring.mp4",
+      mediaSrc: "/videos/Nures -ring.mp4",
       specs: { metal: "Platinum (950)", stone: "2.0ct Oval Cut", clarity: "VVS1, Color E", certification: "GIA Certified" }
     },
     { 
@@ -78,7 +78,7 @@ export default function Home() {
       desc: "18k Rose Gold, Pear Cut Solitaire", 
       longDesc: "A timeless tear-drop silhouette suspended in a halo of light. The warm rose gold band complements the pear-shaped diamond's delicate curves, invoking modern romance.",
       price: "$3,150", 
-      mediaSrc: "/The Celestial Tear-ring.mp4",
+      mediaSrc: "/videos/The Celestial Tear-ring.mp4",
       specs: { metal: "18k Rose Gold", stone: "1.5ct Pear Cut", clarity: "VS1, Color G", certification: "AGSL Certified" }
     }
   ];
@@ -115,7 +115,7 @@ export default function Home() {
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
             <div className="h-14 w-14 rounded-full overflow-hidden border border-[#C5A880]/20 shadow-sm flex items-center justify-center bg-stone-50">
               <img 
-                src="/Logo.jpg" 
+                src="/videos/Logo.jpg" 
                 alt="Lustum Nures Logo" 
                 className="h-full w-full object-cover scale-105"
                 onError={(e) => {
@@ -312,32 +312,84 @@ export default function Home() {
         </div>
       </section>
 
-      const bestsellers = [
-    { 
-      name: "Aurelia Solitaire Band", 
-      desc: "18k Yellow Gold, 1.2ct Diamond", 
-      longDesc: "Crafted with the finest ethically-sourced brilliant cut diamond, set gracefully upon a tapered solid yellow gold band.",
-      price: "$2,450", 
-      mediaSrc: "/aurelia-ring.mp4",
-      specs: { metal: "18k Yellow Gold", stone: "1.2ct Round Brilliant", clarity: "VVS2, Color F", certification: "GIA Certified" }
-    },
-    { 
-      name: "Nures Signature Oval", 
-      desc: "Platinum, 2.0ct VVS1 Diamond", 
-      longDesc: "An exquisite oval-cut solitaire showcasing master craftsmanship.",
-      price: "$4,200", 
-      mediaSrc: "/Nures-ring.mp4",
-      specs: { metal: "Platinum (950)", stone: "2.0ct Oval Cut", clarity: "VVS1, Color E", certification: "GIA Certified" }
-    },
-    { 
-      name: "The Celestial Tear", 
-      desc: "18k Rose Gold, Pear Cut Solitaire", 
-      longDesc: "A timeless tear-drop silhouette suspended in a halo of light.",
-      price: "$3,150", 
-      mediaSrc: "/TheCelestialTearrg.mp4",
-      specs: { metal: "18k Rose Gold", stone: "1.5ct Pear Cut", clarity: "VS1, Color G", certification: "AGSL Certified" }
-    }
-  ];
+      {/* 5. BESTSELLERS SECTION WITH LUXURY MODAL COUPLING */}
+      <section id="bestsellers" className="py-24 bg-[#FAF8F5]">
+        <div className="max-w-7xl mx-auto px-6">
+          
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className="text-center mb-16"
+          >
+            <span className="text-[11px] uppercase tracking-[0.3em] text-[#C5A880] font-semibold mb-2 block">Most Coveted</span>
+            <h2 className="font-serif text-3xl md:text-5xl text-[#1E1F22] font-light">The Bestsellers</h2>
+          </motion.div>
+
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={staggerContainer}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          >
+            {bestsellers.map((prod, index) => {
+              const isVideo = prod.mediaSrc.endsWith(".mp4");
+
+              return (
+                <motion.div 
+                  key={index} 
+                  variants={fadeInUp}
+                  className="group cursor-pointer"
+                >
+                  {/* Media Container */}
+                  <div className="bg-stone-100 overflow-hidden relative aspect-[4/5] flex items-center justify-center border border-stone-200/40 shadow-sm rounded-sm">
+                    {isVideo ? (
+                      <video
+                        src={prod.mediaSrc}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    ) : (
+                      <img 
+                        src={prod.mediaSrc} 
+                        alt={prod.name}
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    )}
+                    
+                    {/* Hover Overlays */}
+                    <div className="absolute inset-0 bg-[#1E1F22]/20 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                      <motion.button 
+                        onClick={() => setSelectedProduct(prod)}
+                        whileHover={{ scale: 1.05, backgroundColor: "#1E1F22", color: "#FAF8F5" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="bg-[#FAF8F5] text-[#1E1F22] border border-[#1E1F22]/10 px-6 py-3 text-xs uppercase tracking-[0.2em] font-medium transition-colors duration-300 shadow-md"
+                      >
+                        Inquire Piece
+                      </motion.button>
+                    </div>
+                  </div>
+
+                  <div className="mt-6 flex justify-between items-start" onClick={() => setSelectedProduct(prod)}>
+                    <div>
+                      <h3 className="font-serif text-lg text-[#1E1F22] font-normal group-hover:text-[#C5A880] transition-colors duration-300">
+                        {prod.name}
+                      </h3>
+                      <p className="text-stone-400 text-xs font-light mt-1">{prod.desc}</p>
+                    </div>
+                    <span className="font-sans text-stone-700 text-sm font-medium">{prod.price}</span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
 
       {/* LUXURY INQUIRY MODAL (AnimatePresence Layer) */}
       <AnimatePresence>
