@@ -62,7 +62,7 @@ export default function Home() {
       desc: "18k Yellow Gold, 1.2ct Diamond", 
       longDesc: "Crafted with the finest ethically-sourced brilliant cut diamond, set gracefully upon a tapered solid yellow gold band. Designed to catch light from every angle with breathtaking fire.",
       price: "$2,450", 
-      mediaSrc: "/videos/aurelia-ring.mp4",
+      mediaSrc: "/aurelia-ring.mp4",
       specs: { metal: "18k Yellow Gold", stone: "1.2ct Round Brilliant", clarity: "VVS2, Color F", certification: "GIA Certified" }
     },
     { 
@@ -70,7 +70,7 @@ export default function Home() {
       desc: "Platinum, 2.0ct VVS1 Diamond", 
       longDesc: "An exquisite oval-cut solitaire showcasing master craftsmanship. Hand-set in pristine, heavy platinum with an ultra-slim micropavé band for the modern connoisseur.",
       price: "$4,200", 
-      mediaSrc: "/videos/Nures -ring.mp4",
+      mediaSrc: "/Nures -ring.mp4",
       specs: { metal: "Platinum (950)", stone: "2.0ct Oval Cut", clarity: "VVS1, Color E", certification: "GIA Certified" }
     },
     { 
@@ -78,7 +78,7 @@ export default function Home() {
       desc: "18k Rose Gold, Pear Cut Solitaire", 
       longDesc: "A timeless tear-drop silhouette suspended in a halo of light. The warm rose gold band complements the pear-shaped diamond's delicate curves, invoking modern romance.",
       price: "$3,150", 
-      mediaSrc: "/videos/The Celestial Tear-ring.mp4",
+      mediaSrc: "/The Celestial Tear-ring.mp4",
       specs: { metal: "18k Rose Gold", stone: "1.5ct Pear Cut", clarity: "VS1, Color G", certification: "AGSL Certified" }
     }
   ];
@@ -115,7 +115,7 @@ export default function Home() {
           <Link href="/" className="flex items-center hover:opacity-90 transition-opacity">
             <div className="h-14 w-14 rounded-full overflow-hidden border border-[#C5A880]/20 shadow-sm flex items-center justify-center bg-stone-50">
               <img 
-                src="/videos/Logo.jpg" 
+                src="/Logo.jpg" 
                 alt="Lustum Nures Logo" 
                 className="h-full w-full object-cover scale-105"
                 onError={(e) => {
